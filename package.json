@@ -1,0 +1,44 @@
+{
+  "name": "libhidtelephony",
+  "version": "0.0.1",
+  "description": "A package to support USB HID telephony through WebHID",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "main": "build/src/lib/main.js",
+  "types": "build/src/lib/main.d.ts",
+  "files": [
+    "dist/src"
+  ],
+  "scripts": {
+    "build": "npm run clean && tsc --build src/lib/tsconfig.json",
+    "build_app": "npm run clean && tsc --build src/test_app/tsconfig.json",
+    "start": "npx webpack serve --config test_app.config.js",
+    "pack": "npm run clean && npx webpack",
+    "pack_app": "npm run clean && npx webpack --config test_app.config.js",
+    "clean": "rimraf ./build ./dist",
+    "lint": "npx eslint . --ext .ts",
+    "compile": "tsc",
+    "fix": "npx eslint . --ext .ts --fix",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "posttest": "npm run lint"
+  },
+  "dependencies": {
+    "@types/w3c-web-hid": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.44",
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0",
+    "eslint": "^8.14.0",
+    "eslint-config-google": "^0.14.0",
+    "html-webpack-plugin": "^5.3.1",
+    "prettier": "^2.6.2",
+    "prettier-eslint": "^14.0.0",
+    "ts-loader": "^9.1.1",
+    "typescript": "^4.2.4",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.1.0"
+  }
+}
